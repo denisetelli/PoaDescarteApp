@@ -1,0 +1,9 @@
+C:\Users\denis\source\repos\WebApplication\Commom\bin\Debug\netstandard2.0\Commom.deps.json
+C:\Users\denis\source\repos\WebApplication\Commom\bin\Debug\netstandard2.0\Commom.dll
+C:\Users\denis\source\repos\WebApplication\Commom\bin\Debug\netstandard2.0\Commom.pdb
+C:\Users\denis\source\repos\WebApplication\Commom\obj\Debug\netstandard2.0\Commom.csprojAssemblyReference.cache
+C:\Users\denis\source\repos\WebApplication\Commom\obj\Debug\netstandard2.0\Commom.csproj.CoreCompileInputs.cache
+C:\Users\denis\source\repos\WebApplication\Commom\obj\Debug\netstandard2.0\Commom.AssemblyInfoInputs.cache
+C:\Users\denis\source\repos\WebApplication\Commom\obj\Debug\netstandard2.0\Commom.AssemblyInfo.cs
+C:\Users\denis\source\repos\WebApplication\Commom\obj\Debug\netstandard2.0\Commom.dll
+C:\Users\denis\source\repos\WebApplication\Commom\obj\Debug\netstandard2.0\Commom.pdb

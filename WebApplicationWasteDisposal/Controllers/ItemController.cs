@@ -21,7 +21,7 @@ namespace Descarte.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            var itens = _itemServico.Get().OrderBy(_ => _.Id);
+            var itens = _itemServico.Get().OrderBy(_ => _.Nome);
             return View(itens);
         }
 

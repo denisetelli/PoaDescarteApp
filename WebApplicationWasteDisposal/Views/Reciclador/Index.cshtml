@@ -4,10 +4,28 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
-<a href="C:\Users\denis\Desktop\DescarteConsciente\Descarte\Views\Reciclador\Index.cshtml">C:\Users\denis\Desktop\DescarteConsciente\Descarte\Views\Reciclador\Index.cshtml</a>
+<h1>Recicladores</h1>
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Adicionar novo</a>
+</p>
+
+<p>
+    Saiba quais são os materiais recebidos nas UDCs, bem como o volume permitido para cada resíduo:
+</p>
+<p>
+    -  Resíduos da construção civil (provenientes de construções, reformas, reparos e demolições e os resultantes da preparação e da escavação de terrenos, tais como tijolos, blocos cerâmicos, concreto em geral, solos, rochas, metais,  madeiras e compensados, forros, argamassa, telhas,  vidros, plásticos, tubulações, fiação elétrica e outros, comumente chamados de entulhos de obras ou caliça): quantidade máxima 0,5 m³/dia (Lei 10.847/2010 c/c Decreto 18.481/2013);
+</p>
+<p>
+    -  Resíduo de manejo da vegetação (podas e supressão): quantidade máxima de 1 m³/dia (art. 34 da Lei Complementar 728/2014);
+</p>
+<p>
+    - Resíduos recicláveis: não há limitação de quantidade ou volume (fomento da reciclagem Lei Complementar 728/2014 c/c Lei 12.305/2010 e Decreto 7.404/2010);
+</p>
+<p>
+    - Resíduos especiais (volumosos: sofá, guarda-roupa, estante, mesa etc.): quantidade máxima 1m³/dia inciso IV do art. 3º e art. 34 da Lei Complementar 728/2014);
+</p>
+<p>
+    - Pneus: quantidade máxima de quatro por pessoa por dia (art. 34 da Lei Complementar 728/2014).
 </p>
 <table class="table">
     <thead>
@@ -21,33 +39,28 @@
             <th>
                 @Html.DisplayNameFor(model => model.Endereco)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Coordenadas)
-            </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Telefone)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Endereco)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Coordenadas)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Telefone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Endereco)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Detalhes</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Apagar</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

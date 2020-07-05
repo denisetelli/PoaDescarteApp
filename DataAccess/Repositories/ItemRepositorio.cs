@@ -52,5 +52,11 @@ namespace DataAccess.Repositories.Interfaces
         {
             return _itemAsNoTracking;
         }
+
+        public IEnumerable<Item> GetByCategory(int categoriaId)
+        {
+            var itemsByCateogry = _itemAsNoTracking.Where(_=>_.Categoria.Id== categoriaId);
+            return itemsByCateogry;
+        }
     }
 }

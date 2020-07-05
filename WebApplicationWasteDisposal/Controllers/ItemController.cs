@@ -3,16 +3,19 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Business.Services.Interfaces;
 using Commom.Dtos;
+using System.Collections.Generic;
 
 namespace Descarte.Controllers
 {
     public class ItemController : Controller
     {
         private readonly IItemServico _itemServico;
+        private readonly ICategoriaServico _categoriaServico;
 
-        public ItemController(IItemServico itemServico)
+        public ItemController(IItemServico itemServico, ICategoriaServico categoriaServico)
         {
             _itemServico = itemServico;
+            _categoriaServico = categoriaServico;
         }
 
         [HttpGet]
@@ -25,13 +28,14 @@ namespace Descarte.Controllers
         [HttpGet]
         public IActionResult Create()
         {
+            ViewBag.Categories = _categoriaServico.Get();
             return View();
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(ItemDto item)
+        public async Task<IActionResult> Create(ItemDto itemDto)
         {
-            _itemServico.Add(item);
+            _itemServico.Add(itemDto);
             return RedirectToAction("Index");
         }
 
@@ -43,14 +47,14 @@ namespace Descarte.Controllers
         }
 
         [HttpGet]
-        public IActionResult Details(int? id)
+        public IActionResult Details(int? Id)
         {
-            if (id == null)
+            if (Id == null)
             {
                 return NotFound();
             }
 
-            var item = _itemServico.FindById(id);
+            var item = _itemServico.FindById(Id);
             if (item == null)
             {
                 return NotFound();
@@ -67,10 +71,17 @@ namespace Descarte.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit(ItemDto itemDto)
+        public async Task<IActionResult> Edit(ItemDto item)
         {
-            _itemServico.Edit(itemDto);
+            _itemServico.Edit(item);
             return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public IActionResult CategoryItems(int Id)
+        {
+            IEnumerable<ItemDto> itens = _itemServico.GetByCategory(Id);
+            return View(itens);
         }
     }
 }

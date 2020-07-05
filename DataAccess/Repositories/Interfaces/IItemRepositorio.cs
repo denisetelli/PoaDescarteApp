@@ -12,5 +12,6 @@ namespace DataAccess.Repositories
         bool Edit(Item item);
         Item FindById(int? id);
         IEnumerable<Item> Get();
+        IEnumerable<Item> GetByCategory(int categoriaId);
     }
 }

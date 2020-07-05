@@ -7,6 +7,8 @@ namespace Commom.Dtos
 
         public string Nome { get; set; }
 
+        public int CategoriaId { get; set; }
+
         public CategoriaDto Categoria { get; set; }
     }
 }

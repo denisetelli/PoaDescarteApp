@@ -12,5 +12,6 @@ namespace Business.Services.Interfaces
         void Edit(ItemDto categoria);
         ItemDto FindById(int? id);
         IEnumerable<ItemDto> Get();
+        IEnumerable<ItemDto> GetByCategory(int categoriaId);
     }
 }

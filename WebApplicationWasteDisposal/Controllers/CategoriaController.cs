@@ -3,6 +3,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Business.Services.Interfaces;
 using Commom.Dtos;
+using Google.Apis.YouTube.v3;
+using Google.Apis.Services;
 
 namespace Descarte.Controllers
 {
@@ -18,7 +20,7 @@ namespace Descarte.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            var categorias = _categoriaServico.Get().OrderBy( _=> _.Id);
+            var categorias = _categoriaServico.Get().OrderBy(_ => _.Id);
             return View(categorias);
         }
 
@@ -31,17 +33,17 @@ namespace Descarte.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(CategoriaDto categoria)
         {
-                _categoriaServico.Add(categoria);
-                return RedirectToAction("Index");            
+            _categoriaServico.Add(categoria);
+            return RedirectToAction("Index");
         }
-        
+
         [HttpGet]
         public async Task<IActionResult> Delete(int id)
         {
             _categoriaServico.Delete(id);
             return RedirectToAction("Index");
         }
-                
+
         [HttpGet]
         public IActionResult Details(int? id)
         {
@@ -50,7 +52,7 @@ namespace Descarte.Controllers
                 return NotFound();
             }
 
-            var categoria =  _categoriaServico.FindById(id);
+            var categoria = _categoriaServico.FindById(id);
             if (categoria == null)
             {
                 return NotFound();
@@ -71,6 +73,72 @@ namespace Descarte.Controllers
         {
             _categoriaServico.Edit(categoria);
             return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public IActionResult DetailsPaper()
+        {
+            var categoria = _categoriaServico.FindById(1);
+            if (categoria == null)
+            {
+                return NotFound();
+            }
+            return View(categoria);
+        }
+
+        [HttpGet]
+        public IActionResult DetailsGlass()
+        {
+            var categoria = _categoriaServico.FindById(2);
+            if (categoria == null)
+            {
+                return NotFound();
+            }
+            return View(categoria);
+        }
+
+        [HttpGet]
+        public IActionResult DetailsMetal()
+        {
+            var categoria = _categoriaServico.FindById(3);
+            if (categoria == null)
+            {
+                return NotFound();
+            }
+            return View(categoria);
+        }
+
+        [HttpGet]
+        public IActionResult DetailsEWaste()
+        {
+            var categoria = _categoriaServico.FindById(4);
+            if (categoria == null)
+            {
+                return NotFound();
+            }
+            return View(categoria);
+        }
+
+        [HttpGet]
+        public IActionResult DetailsPlastic()
+        {
+            var categoria = _categoriaServico.FindById(5);
+            if (categoria == null)
+            {
+                return NotFound();
+            }
+            return View(categoria);
+        }
+
+        [HttpGet]
+        public IActionResult DetailsOrganic()
+        {
+            var categoria = _categoriaServico.FindById(6);
+            if (categoria == null)
+            {
+                return NotFound();
+            }
+            return View(categoria);
         }
     }
 }

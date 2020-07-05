@@ -9,7 +9,7 @@ using System.Text;
 
 namespace Business.Services
 {
-    public class ItemServico: IItemServico
+    public class ItemServico : IItemServico
     {
         private readonly IItemRepositorio _itemRepositorio;
         private readonly IMapper _mapper;
@@ -30,21 +30,27 @@ namespace Business.Services
             _itemRepositorio.Delete(id);
         }
 
-        public void Edit(ItemDto categoria)
+        public void Edit(ItemDto item)
         {
-            _itemRepositorio.Edit(_mapper.Map<Item>(categoria));
+            _itemRepositorio.Edit(_mapper.Map<Item>(item));
         }
 
         public ItemDto FindById(int? id)
         {
-            var categoria = _itemRepositorio.FindById(id);
-            return _mapper.Map<ItemDto>(categoria);
+            var item = _itemRepositorio.FindById(id);
+            return _mapper.Map<ItemDto>(item);
         }
 
         public IEnumerable<ItemDto> Get()
         {
-            var categorias = _itemRepositorio.Get();
-            return _mapper.Map<List<ItemDto>>(categorias);
+            var itens = _itemRepositorio.Get();
+            return _mapper.Map<List<ItemDto>>(itens);
+        }
+
+        public IEnumerable<ItemDto> GetByCategory(int categoriaId)
+        {
+            var itemsByCateogry = _itemRepositorio.GetByCategory(categoriaId);
+            return _mapper.Map<List<ItemDto>>(itemsByCateogry);
         }
     }
 }
